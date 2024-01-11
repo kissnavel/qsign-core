@@ -1,4 +1,5 @@
 <h3>docker镜像拉取缓慢或无法拉取请自行配置加速</h3>
+<p><a href="https://hub.docker.com/r/kissnavel/qsign">docker镜像地址</a></p>
 <p>奇妙的Sign API</p>
 <p>感谢<a href="https://github.com/fuqiuluo/unidbg-fetch-qsign">github.com/fuqiuluo/unidbg-fetch-qsign</a></p>
 <p>core版本<code>1.1.9</code>，将<a href="https://hub.docker.com/r/xzhouqd/qsign">core</a>与<a href="https://gitee.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign/txlib">协议</a>打包，默认协议版本<code>8.9.93</code>，仅支持linux/amd64，不支持linux/arm64</p>
