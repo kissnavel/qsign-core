@@ -1,8 +1,8 @@
+<h3>docker镜像拉取缓慢或无法拉取请自行配置加速</h3>
 <p>奇妙的Sign API</p>
 <p>感谢<a href="https://github.com/fuqiuluo/unidbg-fetch-qsign">github.com/fuqiuluo/unidbg-fetch-qsign</a></p>
-<p>core版本<code>1.1.9</code>，将<a href="https://hub.docker.com/r/xzhouqd/qsign">core</a>与<a href="https://github.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign/txlib">协议</a>打包，默认协议版本<code>8.9.93</code>，仅支持linux/amd64，不支持linux/arm64</p>
-<p>tags中的<code>touchscale-1.2.0</code>打包自<a href="https://github.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign">Qsign</a>，仅小改下版本号，其余与<code>core-1.1.9</code>无区别，如需部署请自行替换下方部署方式中的pull tag</p>
-<h3>docker镜像拉取缓慢或无法拉取请自行配置加速</h3>
+<p>core版本<code>1.1.9</code>，将<a href="https://hub.docker.com/r/xzhouqd/qsign">core</a>与<a href="https://gitee.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign/txlib">协议</a>打包，默认协议版本<code>8.9.93</code>，仅支持linux/amd64，不支持linux/arm64</p>
+<p>tags中的<code>touchscale-1.2.0</code>打包自<a href="https://gitee.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign">Qsign</a>，仅小改下版本号，其余与<code>core-1.1.9</code>无区别，如需部署请自行替换下方部署方式中的pull tag</p>
 <h3>本镜像包含协议txlib情况</h3>
 <p><code>3.5.1</code>、<code>3.5.2</code>、<code>8.9.63</code>、<code>8.9.68</code>、<code>8.9.70</code>、<code>8.9.71</code>、<code>8.9.73</code>、<code>8.9.75</code>、<code>8.9.76</code>、<code>8.9.78</code>、<code>8.9.80</code>、<code>8.9.83</code>、<code>8.9.85</code>、<code>8.9.88</code>、<code>8.9.90</code>、<code>8.9.93</code>、<code>9.0.0</code>、<code>9.0.8</code></p>
 <p>以8.9.93举例，默认配置文件，请先检查是否确实是自己想要的配置</p>
