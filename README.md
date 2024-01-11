@@ -44,7 +44,7 @@
 <p><code>{host_port}: 宿主机侧访问的端口
 {internal_port}: 容器内服务端口（在config.json配置！）
 {host_abs_config.json_path}: 宿主机侧config.json文件绝对路径
-{version}: 协议版本号，如8.9.93</code><p>
+{version}: 协议版本号，如8.9.93</code></p>
 <p>2.整体传入一个完整txlib文件夹：</p>
 <pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH={internal_abs_base_path} -v {host_abs_txlib_path}:{internal_abs_base_path} --name qsign kissnavel/qsign:core-1.1.9</code></pre>
 <p><code>{host_port}: 宿主机侧访问的端口
