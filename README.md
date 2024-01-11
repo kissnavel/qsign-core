@@ -30,7 +30,7 @@
  }</code></pre>
 <h3>部署方式</h3>
 <p>拉取镜像：</p>
-<pre><code>docker pull kissnavel/qsign:core-1.1.9</code><pre>
+<pre><code>docker pull kissnavel/qsign:core-1.1.9</code></pre>
 <p><code>{host_port}</code>填你想要的宿主机上的端口号，如<code>801</code>，<code>{version}</code>填协议版本号，如<code>8.9.93</code><p>
 <h4>1.使用默认配置文件，可使用如下简化命令运行镜像：</h4>
 <p>部署镜像：</p>
