@@ -1,39 +1,61 @@
-# qsign-core
+<p>奇妙的Sign API</p>
+<p>感谢<a href="https://github.com/fuqiuluo/unidbg-fetch-qsign">github.com/fuqiuluo/unidbg-fetch-qsign</a></p>
+<p>core版本<code>1.1.9</code>，将<a href="https://hub.docker.com/r/xzhouqd/qsign">core</a>与<a href="https://github.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign/txlib">协议</a>打包，默认协议版本<code>8.9.93</code>，仅支持linux/amd64，不支持linux/arm64</p>
+<p>tags中的<code>touchscale-1.2.0</code>打包自<a href="https://github.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign">Qsign</a>，仅小改下版本号，其余与<code>core-1.1.9</code>无区别，如需部署请自行替换下方部署方式中的pull tag</p>
+<h3>本镜像包含协议txlib情况</h3>
+<p><code>3.5.1</code>、<code>3.5.2</code>、<code>8.9.63</code>、<code>8.9.68</code>、<code>8.9.70</code>、<code>8.9.71</code>、<code>8.9.73</code>、<code>8.9.75</code>、<code>8.9.76</code>、<code>8.9.78</code>、<code>8.9.80</code>、<code>8.9.83</code>、<code>8.9.85</code>、<code>8.9.88</code>、<code>8.9.90</code>、<code>8.9.93</code>、<code>9.0.0</code>、<code>9.0.8</code></p>
+<p>以8.9.93举例，默认配置文件，请先检查是否确实是自己想要的配置</p>
+<pre><code>{ 
+   "server": { 
+     "host": "0.0.0.0", 
+     "port": 801 
+   }, 
+   "key": "114514", 
+   "auto_register": true, 
+   "protocol": { 
+     "package_name": "com.tencent.mobileqq", 
+     "qua": "V1_AND_SQ_8.9.93_5028_YYB_D", 
+     "version": "8.9.93", 
+     "code": "5028" 
+   }, 
+   "unidbg": {
+    "dynarmic": true,
+    "unicorn": false,
+    "debug": false
+  },
+   "black_list": [
+     1008611
+   ]
+ }</code></pre>
+<h3>部署方式</h3>
+<p>拉取镜像：</p>
+<p><code>docker pull kissnavel/qsign:core-1.1.9</code><p>
+<p><code>{host_port}</code>填你想要的宿主机上的端口号，如<code>801</code>，<code>{version}</code>填协议版本号，如<code>8.9.93</code><p>
+<h4>1.使用默认配置文件，可使用如下简化命令运行镜像：</h4>
+<p>部署镜像：</p>
+<pre><code>docker run -d -p {host_port}:801 --restart=always --name qsign kissnavel/qsign:core-1.1.9</code></pre>
+<h4>2.使用默认配置文件，指定协议版本：</h4>
+<p>部署镜像：</p>
+<pre><code>docker run -d -p {host_port}:801 --restart=always -e BASE_PATH=/srv/qsign/qsign/txlib/{version} --name qsign kissnavel/qsign:core-1.1.9</code></pre>
+<h4>3.修改配置文件，传入config.json/整体传入一个txlib文件夹的部署方式：</h4>
+<p>1.传入config.json，不修改其他内容：<p>
+<pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH=/srv/qsign/qsign/txlib/{version} -v {host_abs_config.json_path}:/srv/qsign/qsign/txlib/{version}/config.json --name qsign kissnavel/qsign:core-1.1.9
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+{host_port}: 宿主机侧访问的端口
+{internal_port}: 容器内服务端口（在config.json配置！）
+{host_abs_config.json_path}: 宿主机侧config.json文件绝对路径
+{version}: 协议版本号，如8.9.93</code></pre>
+<p>2.整体传入一个完整txlib文件夹：</p>
+<pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH={internal_abs_base_path} -v {host_abs_txlib_path}:{internal_abs_base_path} --name qsign kissnavel/qsign:core-1.1.9
 
-#### 软件架构
-软件架构说明
-
-
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+{host_port}: 宿主机侧访问的端口
+{internal_port}: 容器内服务端口（在config.json配置！）
+{internal_abs_base_path}: 容器内txlib具体所在目录（包含4个文件的目录）绝对路径
+{host_abs_txlib_path}: 宿主机侧txlib所在目录绝对路径</code></pre>
+<h3>签名API地址</h3>
+<p>默认地址：<code>http://127.0.0.1:801/sign?key=114514</code>，根据自己实际情况修改</p>
+<h3>常见问题</h3>
+<h4>1.Read memory failed</h4>
+<p>目前使用9.0.0及以上协议会报错内存错误并强制退出，暂无有效解决方法，请使用低版本</p>
+<h4>2.JAVA_HOME报错</h4>
+<p>更新你的docker engine！eclipse temurin底包版本很高，当你的os和docker engine版本很低的时候，会报错，升级docker engine能解决这个问题</p>
