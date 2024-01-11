@@ -2,6 +2,7 @@
 <p>感谢<a href="https://github.com/fuqiuluo/unidbg-fetch-qsign">github.com/fuqiuluo/unidbg-fetch-qsign</a></p>
 <p>core版本<code>1.1.9</code>，将<a href="https://hub.docker.com/r/xzhouqd/qsign">core</a>与<a href="https://github.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign/txlib">协议</a>打包，默认协议版本<code>8.9.93</code>，仅支持linux/amd64，不支持linux/arm64</p>
 <p>tags中的<code>touchscale-1.2.0</code>打包自<a href="https://github.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign">Qsign</a>，仅小改下版本号，其余与<code>core-1.1.9</code>无区别，如需部署请自行替换下方部署方式中的pull tag</p>
+<p>docker镜像拉取缓慢或无法拉取请自行配置加速</p>
 <h3>本镜像包含协议txlib情况</h3>
 <p><code>3.5.1</code>、<code>3.5.2</code>、<code>8.9.63</code>、<code>8.9.68</code>、<code>8.9.70</code>、<code>8.9.71</code>、<code>8.9.73</code>、<code>8.9.75</code>、<code>8.9.76</code>、<code>8.9.78</code>、<code>8.9.80</code>、<code>8.9.83</code>、<code>8.9.85</code>、<code>8.9.88</code>、<code>8.9.90</code>、<code>8.9.93</code>、<code>9.0.0</code>、<code>9.0.8</code></p>
 <p>以8.9.93举例，默认配置文件，请先检查是否确实是自己想要的配置</p>
@@ -29,7 +30,7 @@
  }</code></pre>
 <h3>部署方式</h3>
 <p>拉取镜像：</p>
-<p><code>docker pull kissnavel/qsign:core-1.1.9</code><p>
+<pre><code>docker pull kissnavel/qsign:core-1.1.9</code><pre>
 <p><code>{host_port}</code>填你想要的宿主机上的端口号，如<code>801</code>，<code>{version}</code>填协议版本号，如<code>8.9.93</code><p>
 <h4>1.使用默认配置文件，可使用如下简化命令运行镜像：</h4>
 <p>部署镜像：</p>
@@ -39,19 +40,17 @@
 <pre><code>docker run -d -p {host_port}:801 --restart=always -e BASE_PATH=/srv/qsign/qsign/txlib/{version} --name qsign kissnavel/qsign:core-1.1.9</code></pre>
 <h4>3.修改配置文件，传入config.json/整体传入一个txlib文件夹的部署方式：</h4>
 <p>1.传入config.json，不修改其他内容：<p>
-<pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH=/srv/qsign/qsign/txlib/{version} -v {host_abs_config.json_path}:/srv/qsign/qsign/txlib/{version}/config.json --name qsign kissnavel/qsign:core-1.1.9
-
-{host_port}: 宿主机侧访问的端口
+<pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH=/srv/qsign/qsign/txlib/{version} -v {host_abs_config.json_path}:/srv/qsign/qsign/txlib/{version}/config.json --name qsign kissnavel/qsign:core-1.1.9</code></pre>
+<p><code>{host_port}: 宿主机侧访问的端口
 {internal_port}: 容器内服务端口（在config.json配置！）
 {host_abs_config.json_path}: 宿主机侧config.json文件绝对路径
-{version}: 协议版本号，如8.9.93</code></pre>
+{version}: 协议版本号，如8.9.93</code><p>
 <p>2.整体传入一个完整txlib文件夹：</p>
-<pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH={internal_abs_base_path} -v {host_abs_txlib_path}:{internal_abs_base_path} --name qsign kissnavel/qsign:core-1.1.9
-
-{host_port}: 宿主机侧访问的端口
+<pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH={internal_abs_base_path} -v {host_abs_txlib_path}:{internal_abs_base_path} --name qsign kissnavel/qsign:core-1.1.9</code></pre>
+<p><code>{host_port}: 宿主机侧访问的端口
 {internal_port}: 容器内服务端口（在config.json配置！）
 {internal_abs_base_path}: 容器内txlib具体所在目录（包含4个文件的目录）绝对路径
-{host_abs_txlib_path}: 宿主机侧txlib所在目录绝对路径</code></pre>
+{host_abs_txlib_path}: 宿主机侧txlib所在目录绝对路径</code></p>
 <h3>签名API地址</h3>
 <p>默认地址：<code>http://127.0.0.1:801/sign?key=114514</code>，根据自己实际情况修改</p>
 <h3>常见问题</h3>
