@@ -3,6 +3,7 @@
 <p>奇妙的Sign API</p>
 <p>感谢<a href="https://github.com/fuqiuluo/unidbg-fetch-qsign">github.com/fuqiuluo/unidbg-fetch-qsign</a></p>
 <p>仅支持linux/amd64，不支持linux/arm64</p>
+<h3>pull tags</h3>
 <p><code>core-1.1.9</code>将<a href="https://hub.docker.com/r/xzhouqd/qsign">core</a>与<a href="https://gitee.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign/txlib">协议</a>打包，默认协议版本<code>8.9.80</code></p>
 <p><code>touchscale-1.2.0</code>打包自<a href="https://gitee.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign">Qsign</a>，仅小改下版本号，其余与<code>core-1.1.9</code>无区别</p>
 <p><code>core-1.2.1</code>不推荐使用，该版本运行一段时间后容器有概率卡死崩溃。虽说docker有<code>--restart=always</code>这个参数存在，可以在容器卡死崩溃时自动重启，但容器从收到指令运行时卡死崩溃到自动重启是需要时间的，体感就是指令发出去没反应，过了1分钟左右才回复消息</p>
