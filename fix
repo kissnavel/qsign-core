@@ -37,7 +37,7 @@
 <p>如需部署不同tag请自行替换下方部署方式中的pull tag</p>
 <p>拉取镜像：</p>
 <pre><code>docker pull kissnavel/qsign:core-1.1.9</code></pre>
-<p><code>{host_port}</code>填你想要的宿主机上的端口号，如<code>801</code>，<code>{version}</code>填协议版本号，如<code>8.9.80</code><p>
+<p><code>{host_port}</code>填你想要的宿主机上的端口号，如<code>801</code>，<code>{version}</code>填协议版本号，如<code>8.9.80</code></p>
 <h4>1.使用默认配置文件，可使用如下简化命令运行镜像：</h4>
 <p>部署镜像：</p>
 <pre><code>docker run -d -p {host_port}:801 --restart=always --name qsign kissnavel/qsign:core-1.1.9</code></pre>
@@ -45,7 +45,7 @@
 <p>部署镜像：</p>
 <pre><code>docker run -d -p {host_port}:801 --restart=always -e BASE_PATH=/srv/qsign/qsign/txlib/{version} --name qsign kissnavel/qsign:core-1.1.9</code></pre>
 <h4>3.修改配置文件，传入config.json/整体传入一个txlib文件夹的部署方式：</h4>
-<p>1.传入config.json，不修改其他内容：<p>
+<p>1.传入config.json，不修改其他内容：</p>
 <pre><code>docker run -d -p {host_port}:{internal_port} --restart=always -e BASE_PATH=/srv/qsign/qsign/txlib/{version} -v {host_abs_config.json_path}:/srv/qsign/qsign/txlib/{version}/config.json --name qsign kissnavel/qsign:core-1.1.9</code></pre>
 <pre><code>{host_port}: 宿主机侧访问的端口
 {internal_port}: 容器内服务端口（在config.json配置！）
