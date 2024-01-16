@@ -3,6 +3,8 @@
 <p>奇妙的Sign API</p>
 <p>感谢<a href="https://github.com/fuqiuluo/unidbg-fetch-qsign">github.com/fuqiuluo/unidbg-fetch-qsign</a></p>
 <p>仅支持linux/amd64，不支持linux/arm64</p>
+<p>建议配置cron参数定时重启容器</p>
+<p>windows平台请看<a href="https://gitee.com/touchscale/Qsign">这里</a></p>
 <h3>pull tags</h3>
 <p><code>core-1.1.9</code>将<a href="https://hub.docker.com/r/xzhouqd/qsign">core</a>与<a href="https://gitee.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign/txlib">协议</a>打包，默认协议版本<code>8.9.80</code></p>
 <p><code>touchscale-1.2.0</code>打包自<a href="https://gitee.com/touchscale/Qsign/tree/master/unidbg-fetch-qsign">Qsign</a>，仅小改下版本号，其余与<code>core-1.1.9</code>无区别</p>
